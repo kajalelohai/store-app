@@ -7,7 +7,10 @@ class App extends Component {
   render() {
     return (
       <div className="container">
-       
+       <div className="row">
+        <div className="col-6">first column</div>
+        <div className="col-6">second column</div>
+       </div>
       </div>
     );
   }
