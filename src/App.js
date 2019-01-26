@@ -7,6 +7,7 @@ import Details from './components/Details';
 import ProductList from './components/ProductList';
 import Cart from './components/Cart';
 import Default from './components/Default';
+import {Switch,Route} from 'react-router-dom';
 
 class App extends Component {
   render() {
