@@ -10,6 +10,10 @@ class ProductProvider extends Component {
   componentDidMount() {
     this.setProducts();
   }
+  getItem = (id) => {
+    const product = this.state.products.find((item) => item.id === id);
+    return product;
+  };
   setProducts = () => {
     let products = [];
     storeProducts.map((item) => {
@@ -20,8 +24,11 @@ class ProductProvider extends Component {
       return { products }; //ecmascript6 syntax to assign for same names
     });
   };
-  handleDetail = () => {
-    console.log('Hello from Detail');
+  handleDetail = (id) => {
+    const product = this.getItem(id);
+    this.setState(() => {
+      return { detailProduct: product };
+    });
   };
   addToCart = (id) => {
     console.log(`Hello from add to cart ${id}`);
