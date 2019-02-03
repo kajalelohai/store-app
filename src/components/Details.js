@@ -34,6 +34,7 @@ export default class Details extends Component {
                       {price}
                     </strong>
                   </h4>
+                  <h4 className="text-title text-uppercase text-muted mt-3 mb-2" />
                   <p className="text-capitalize font-weight-bold mt-3 mb-0">
                     some info about the product
                   </p>
@@ -42,6 +43,14 @@ export default class Details extends Component {
                     <Link to="/">
                       <ButtonContainer>Back to products</ButtonContainer>
                     </Link>
+                    <ButtonContainer
+                      cart
+                      disabled={inCart ? true : false}
+                      onClick={() => {
+                        value.addToCart(id);
+                      }}>
+                      {inCart ? 'inCart' : 'add to cart'}
+                    </ButtonContainer>
                   </div>
                 </div>
               </div>
