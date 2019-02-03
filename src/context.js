@@ -4,8 +4,21 @@ import { detailProduct, storeProducts } from './data';
 const ProductContext = React.createContext();
 class ProductProvider extends Component {
   state = {
-    products: storeProducts,
+    products: [],
     detailProduct: detailProduct
+  };
+  componentDidMount() {
+    this.setProducts();
+  }
+  setProducts = () => {
+    let products = [];
+    storeProducts.map((item) => {
+      const singleitem = { ...item };
+      return (products = [...products, singleitem]);
+    });
+    this.setState(() => {
+      return { products }; //ecmascript6 syntax to assign for same names
+    });
   };
   handleDetail = () => {
     console.log('Hello from Detail');
