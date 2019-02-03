@@ -11,6 +11,7 @@ export const ButtonContainer = styled.button`
   border-radius: 0.5rem;
   padding: 0.2 0.5;
   cursor: pointer;
+  margin: 2px;
   margin: 0.2 0.5 0.2 0;
   transition: all 0.5s ease-in-out;
   &:hover {
