@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { detailProduct, storeProducts } from './data';
+import React, { Component } from "react";
+import { detailProduct, storeProducts } from "./data";
 
 const ProductContext = React.createContext();
 class ProductProvider extends Component {
@@ -7,7 +7,7 @@ class ProductProvider extends Component {
     products: [],
     detailProduct: detailProduct,
     cart: [],
-    modelOpen: false,
+    modalOpen: true,
     modelProduct: detailProduct,
     cartSubTotal: 0,
     cartTotal: 0,
@@ -16,13 +16,13 @@ class ProductProvider extends Component {
   componentDidMount() {
     this.setProducts();
   }
-  getItem = (id) => {
-    const product = this.state.products.find((item) => item.id === id);
+  getItem = id => {
+    const product = this.state.products.find(item => item.id === id);
     return product;
   };
   setProducts = () => {
     let products = [];
-    storeProducts.map((item) => {
+    storeProducts.map(item => {
       const singleitem = { ...item };
       return (products = [...products, singleitem]);
     });
@@ -30,13 +30,13 @@ class ProductProvider extends Component {
       return { products }; //ecmascript6 syntax to assign for same names
     });
   };
-  handleDetail = (id) => {
+  handleDetail = id => {
     const product = this.getItem(id);
     this.setState(() => {
       return { detailProduct: product };
     });
   };
-  addToCart = (id) => {
+  addToCart = id => {
     const tempProducts = [...this.state.products];
     const index = tempProducts.indexOf(this.getItem(id));
     const product = tempProducts[index];
@@ -54,18 +54,19 @@ class ProductProvider extends Component {
     );
   };
 
-  openModel = (id) => {
+  openModal = id => {
     const product = this.getItem(id);
     this.setState(() => {
-      return { modelProduct: product, modelOpen: true };
+      return { modelProduct: product, modalOpen: true };
     });
   };
 
   closeModal = () => {
     this.setState(() => {
-      return { modelOpen: false };
+      return { modalOpen: false };
     });
   };
+
   render() {
     return (
       <ProductContext.Provider
@@ -73,9 +74,10 @@ class ProductProvider extends Component {
           ...this.state,
           handleDetail: this.handleDetail,
           addToCart: this.addToCart,
-          modelOpen: this.openModel,
+          openModal: this.openModal,
           closeModal: this.closeModal
-        }}>
+        }}
+      >
         {this.props.children}
       </ProductContext.Provider>
     );

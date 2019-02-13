@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import styled from 'styled-components';
-import { Link } from 'react-router-dom';
-import { ProductConsumer } from '../context';
-import PropTypes from 'prop-types';
+import React, { Component } from "react";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
+import { ProductConsumer } from "../context";
+import PropTypes from "prop-types";
 
 export default class Product extends Component {
   render() {
@@ -11,12 +11,13 @@ export default class Product extends Component {
       <ProductWrapper className="col-9 mx-auto col-md-6 col-lg-3 my-3">
         <div className="card">
           <ProductConsumer>
-            {(value) => (
+            {value => (
               <div
                 className="img-container p-5"
                 onClick={() => {
                   value.handleDetail(id);
-                }}>
+                }}
+              >
                 <Link to="/details">
                   <img src={img} alt="product" className="card-img-top" />
                 </Link>
@@ -25,10 +26,12 @@ export default class Product extends Component {
                   disabled={incart ? true : false}
                   onClick={() => {
                     value.addToCart(id);
-                  }}>
+                    value.openModal(id);
+                  }}
+                >
                   {incart ? (
                     <p className="text-capitalize mb-0" diabled>
-                      {''} in cart
+                      {""} in cart
                     </p>
                   ) : (
                     <i className="fas fa-cart-plus" />
