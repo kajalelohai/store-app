@@ -7,7 +7,7 @@ class ProductProvider extends Component {
     products: [],
     detailProduct: detailProduct,
     cart: [],
-    modalOpen: true,
+    modalOpen: false,
     modelProduct: detailProduct,
     cartSubTotal: 0,
     cartTotal: 0,
